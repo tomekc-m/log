@@ -44,13 +44,9 @@ final class StreamHandler extends AbstractProcessingHandler
     }
 
     /**
-     * Writes the record down to the log of the implementing handler.
-     *
-     * @param  array $record
-     *
-     * @return void
+     * @param array|\Monolog\LogRecord $record
      */
-    protected function write(array $record): void
+    protected function write($record): void
     {
         if ($this->exception) {
             throw $this->exception;
