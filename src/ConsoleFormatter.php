@@ -23,7 +23,7 @@ final class ConsoleFormatter extends LineFormatter
      */
     public function format($record): string
     {
-        if ($this->colors && PHP_VERSION_ID < 81000) {
+        if ($this->colors && PHP_VERSION_ID < 80100) {
             $record['level_name'] = $this->ansifyLevel($record['level_name']);
             $record['channel'] = "\033[1m{$record['channel']}\033[0m";
         }
