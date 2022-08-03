@@ -18,9 +18,12 @@ final class ConsoleFormatter extends LineFormatter
         $this->setAnsiColorOption();
     }
 
-    public function format(array $record): string
+    /**
+     * @param array|\Monolog\LogRecord $record
+     */
+    public function format($record): string
     {
-        if ($this->colors) {
+        if ($this->colors && PHP_VERSION_ID < 81000) {
             $record['level_name'] = $this->ansifyLevel($record['level_name']);
             $record['channel'] = "\033[1m{$record['channel']}\033[0m";
         }
